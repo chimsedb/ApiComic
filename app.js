@@ -20,10 +20,10 @@ app.use('/link',link);
 app.use('/manga',manga);
 app.use('/mangacategory',mangacategory);
 
-// app.get('/',(req,res,next)=>{
-//     res.status(200).json({
-//         mesage : "mesage"
-//     })
-// })
+app.get('/',(req,res,next)=>{
+    res.status(200).json({
+        mesage : "mesage"
+    })
+})
 
 module.exports = app;
