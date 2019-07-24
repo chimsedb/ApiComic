@@ -1,22 +1,14 @@
-const config = require('../config/configdb');
-const sql = require('mssql');
+const connection = require('../config/configdb');
 
 exports.link = (req,res,next)=>{
-    sql.connect(config, function (err) {
-    
-        if (err) console.log(err);
 
-        // create Request object
-        var request = new sql.Request();
-           
-        // query to the database and get the records
-        request.query('select * from link', function (err, recordset) {
-            
-            if (err) console.log(err)
+    connection.query('select * from link', function (error, results, fields) {
+        if (error) throw error;
+        console.log('The solution is: ', results[0].solution);
 
-            // send records as a response
-            res.send(recordset);
-            sql.close();
-        });
+        if(results){
+            res.status(200).json(results);
+        }
     });
+
 }

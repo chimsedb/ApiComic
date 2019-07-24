@@ -1,11 +1,10 @@
-var sql =require('mssql');
+var mysql =require('mysql');
 
-// config for your database
-var config = {
-    user: 'sa',
-    password: '123',
-    server: 'localhost', 
-    database: 'ComicApp'
-};
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : '',
+  database : 'testmanga'
+  });
 
-module.exports = config;
+module.exports = connection;
